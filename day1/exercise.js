@@ -62,15 +62,15 @@ const findMiss = (arr1, arr2) => {
     for(i = 0; i <= arr1.length; i++){
         let flag = false;
         for(j = 0; j <= arr2.length; j ++){
-            if(arr2[j] == arr1[i]){
+            if(arr1[i] == arr2[j]){
                 break
             }else{
                 flag = true
-                console.log(arr2[j+1] + " is missing");
-                break
+                console.log(arr1[i+1] + " is missing");
             }
         }
         if(flag){
+            console.log(arr1[i+1] + " is missing");
             break;
         }else{
             console.log("nothing is missing");
