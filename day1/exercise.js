@@ -37,7 +37,15 @@ console.log("4 - " + extensWord(word)[1])
 //EXERCISE 2
 console.log("EXERCISE 2")
 /* 1. Write the function to calculate the combination (Ckn) */
-
+const combination = (a, b)=>{
+ let prd = a;
+ let i = a;
+    while (i++ < b){
+        prd *= i;
+    }
+    return prd;
+}
+console.log("1 - " + combination(2,6));
 /* 2. Write the function to get a random integer between 2 numbers: min, max; */
 const randomInt = (min,max)=>{
     return Math.floor(Math.random()*(max-min+1)+min)
@@ -54,14 +62,15 @@ const findMiss = (arr1, arr2) => {
     for(i = 0; i <= arr1.length; i++){
         let flag = false;
         for(j = 0; j <= arr2.length; j ++){
-            if(arr1[i] == arr2[j]){
+            if(arr2[j] == arr1[i]){
                 break
             }else{
                 flag = true
+                console.log(arr2[j+1] + " is missing");
+                break
             }
         }
         if(flag){
-            console.log(arr1[i+1] + " is missing");
             break;
         }else{
             console.log("nothing is missing");
