@@ -74,9 +74,9 @@ rl.question("ID Nguoi co the choi cung thu 1: ", (cauthu1) => {
     rl.question("ID Nguoi co the choi cung thu 2: ", (cauthu2) => {
         rl.question("ID nguoi khong the choi cung thu 1: ", (cauthu3) => {
             rl.question("ID nguoi khong the choi cung thu 2: ", (cauthu4) => {
-                baiTrung.push(parseInt(cauthu1), parseInt(cauthu2))
+                baiTrung = [parseInt(cauthu1), parseInt(cauthu2)]
                 console.log("Cap bai trung: ", baiTrung);
-                khongtheChoi.push(parseInt(cauthu3), parseInt(cauthu4));
+                khongtheChoi=[parseInt(cauthu3), parseInt(cauthu4)];
                 console.log("khong the choi cung: ", khongtheChoi);
                 thaydoiDK();
             })
