@@ -67,9 +67,9 @@ const randomEle = (arr) => {
 console.log("3 - " + randomEle(array))
 /* 4. Given two arrays of integers, find which elements in the second array are missing from the first array. */
 const findMiss = (arr1, arr2) => {
-    for (i = 0; i <= arr2.length; i++) {
+    for (i = 0; i < arr2.length; i++) {
         let flag = 0;
-        for (j = 0; j <= arr1.length; j++) {
+        for (j = 0; j < arr1.length; j++) {
             if (arr1[j] == arr2[i]) {
                 flag += 1;
                 break;
