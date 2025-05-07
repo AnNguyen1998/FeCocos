@@ -1,39 +1,39 @@
-const dsThanhvien = [
-    { id: 1, role: "Chuluc" },
-    { id: 2, role: "Nongcot" },
-    { id: 3, role: "Nongcot" },
-    { id: 4, role: "Nongcot" },
-    { id: 5, role: "Nongcot" },
-    { id: 6, role: "Nongcot" },
-    { id: 7, role: "Dubi" },
-    { id: 8, role: "Dubi" },
-    { id: 9, role: "Dubi" },
-    { id: 10, role: "Dubi" },
-    { id: 11, role: "Dubi" },
+const memberList = [
+    { id: 1, role: "Main" },
+    { id: 2, role: "Core" },
+    { id: 3, role: "Core" },
+    { id: 4, role: "Core" },
+    { id: 5, role: "Core" },
+    { id: 6, role: "Core" },
+    { id: 7, role: "Bench" },
+    { id: 8, role: "Bench" },
+    { id: 9, role: "Bench" },
+    { id: 10, role: "Bench" },
+    { id: 11, role: "Bench" },
 ]
-let baiTrung = [];
-let khongtheChoi = [];
+let match = [];
+let notMatch = [];
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-const timdoi = (ds) => {
-    const chuLuc = ds.filter(tv => tv.role == "Chuluc");
-    const nongCot = ds.filter(tv => tv.role == "Nongcot");
-    const duBi = ds.filter(tv => tv.role == "Dubi");
-    let doihinhchinhthuc = []
-    for (nc of nongCot) {
-        for (db of duBi) {
-            let doiHinh = [chuLuc[0].id, nc.id, db.id]
-            if (kiemtraDH(doiHinh, baiTrung, khongtheChoi)) {
-                doihinhchinhthuc.push(doiHinh)
+const findTeam = (ds) => {
+    const main = ds.filter(tv => tv.role == "Main");
+    const core = ds.filter(tv => tv.role == "Core");
+    const bench = ds.filter(tv => tv.role == "Bench");
+    let officialTeam = []
+    for (co of core) {
+        for (be of bench) {
+            let team = [main[0].id, co.id, be.id]
+            if (checkTeam(team, match, notMatch)) {
+                officialTeam.push(team)
             }
         }
     }
-    return doihinhchinhthuc;
+    return officialTeam;
 }
-const kiemtraDH = (dh, bt, kph) => {
+const checkTeam = (dh, bt, kph) => {
     let check = 0;
     for (let i = 0; i < bt.length; i++) {
         for (let j = 0; j < dh.length; j++) {
@@ -58,10 +58,10 @@ const kiemtraDH = (dh, bt, kph) => {
     }
     return true;
 }
-const thaydoiDK = () => {
-    rl.question("HLV co thay doi dieu kien ? ", (choice) => {
+const changeCondition = () => {
+    rl.question("Coach change condition ? ", (choice) => {
         if (choice == 'n') {
-            console.log("Danh sach cac doi thoa man Yeu cau: ",timdoi(dsThanhvien));
+            console.log("List Team: ",findTeam(memberList));
             rl.close();
         }
         if (choice == 'y') {
@@ -69,19 +69,19 @@ const thaydoiDK = () => {
         }
     })
 }
-const handleDH = ()=>{
-rl.question("ID Nguoi co the choi cung thu 1: ", (cauthu1) => {
-    rl.question("ID Nguoi co the choi cung thu 2: ", (cauthu2) => {
-        rl.question("ID nguoi khong the choi cung thu 1: ", (cauthu3) => {
-            rl.question("ID nguoi khong the choi cung thu 2: ", (cauthu4) => {
-                baiTrung = [parseInt(cauthu1), parseInt(cauthu2)]
-                console.log("Cap bai trung: ", baiTrung);
-                khongtheChoi=[parseInt(cauthu3), parseInt(cauthu4)];
-                console.log("khong the choi cung: ", khongtheChoi);
-                thaydoiDK();
+const handleTeam = ()=>{
+rl.question("ID member match 1: ", (member1) => {
+    rl.question("ID member match 2: ", (member2) => {
+        rl.question("ID member not match 1: ", (member3) => {
+            rl.question("ID member not match 2: ", (member4) => {
+                match = [parseInt(member1), parseInt(member2)]
+                console.log("member match: ", match);
+                notMatch=[parseInt(member3), parseInt(member4)];
+                console.log("member not match: ", notMatch);
+                changeCondition();
             })
         })
     })
 })
 }
-handleDH();
+handleTeam();
