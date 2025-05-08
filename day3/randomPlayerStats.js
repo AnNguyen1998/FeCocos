@@ -1,5 +1,5 @@
 class Player {
-    constructor(riotId, name, winRate, matchWin, matchLose, winStreak, loseStreak, honorPoints) {
+    constructor(riotId, name, winRate, matchWin, matchLose, winStreak, loseStreak, honorPoints, elo) {
         this.riotId = riotId;
         this.name = name;
         this.winRate = winRate;
@@ -8,6 +8,7 @@ class Player {
         this.winStreak = winStreak;
         this.loseStreak = loseStreak;
         this.honorPoints = honorPoints;
+        this.elo = elo;
     }
 }
 let listPlayer = []
@@ -19,13 +20,7 @@ const randomPlayerStats = () => {
         randomPlayer.name = faker.person.firstName();
         randomPlayer.matchWin = Math.floor(Math.random() * 100);
         randomPlayer.matchLose = 100 - randomPlayer.matchWin;
-        if(randomPlayer.matchWin > randomPlayer.matchLose){
-            randomPlayer.winRate = Math.floor((randomPlayer.matchWin / randomPlayer.matchLose) * 100)
-        }else if(randomPlayer.matchWin < randomPlayer.matchLose){
-            randomPlayer.winRate = Math.floor((randomPlayer.matchLose / randomPlayer.matchWin) * 100)
-        }else{
-            randomPlayer.winRate = 50;
-        }
+        randomPlayer.winRate = randomPlayer.matchWin;
         if (randomPlayer.matchWin > randomPlayer.matchLose) {
             randomPlayer.winStreak = Math.floor(Math.random() * 9 + 2);
             randomPlayer.loseStreak = 0;
@@ -37,6 +32,7 @@ const randomPlayerStats = () => {
             randomPlayer.winStreak = 0;
         }
         randomPlayer.honorPoints = Math.floor(Math.random() * 5);
+        randomPlayer.elo = 0;
         listPlayer.push(randomPlayer);
     }
     const fs = require('fs');

@@ -6,7 +6,24 @@ if (fs.existsSync(path)) {
             console.error("Failed to read the file:", err);
             return;
         }
-        console.log(data)
+        data && data.map((dt)=>{
+            if(dt.honorPoints < 2){
+                if(dt.winRate > 50){
+                    if(dt.winStreak > 5){
+                        
+                    }
+                    if(dt.winStreak > 2){
+                        
+                    }
+                }else{
+    
+                }
+            }else if(dt.honorPoints >= 2 && dt.honorPoints < 4){
+    
+            }else{
+    
+            }
+        })
     }
     )
 }
