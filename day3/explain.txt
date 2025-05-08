@@ -1,0 +1,3 @@
+- Đầu tiên tạo 1 class Player gồm các thông tin cần thiết
+- Sử dụng vòng lặp for random thông tin của 100 người chơi
+- Lưu danh sách người chơi vào file : 'listPlayerStats.json'

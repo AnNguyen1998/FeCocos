@@ -61,7 +61,12 @@ const checkTeam = (dh, bt, kph) => {
 const changeCondition = () => {
     rl.question("Coach change condition ? ", (choice) => {
         if (choice == 'n') {
-            console.log("List Team: ",findTeam(memberList));
+            console.log("List Team: ", findTeam(memberList));
+            if (checkTeam(prTeam, match, notMatch)) {
+                console.log(prTeam, " can combine into 1 team");
+            } else {
+                console.log(prTeam, " can't combine into 1 team because not matching pairs. Matching paris are: ", match);
+            }
             rl.close();
         }
         if (choice == 'y') {
@@ -69,19 +74,27 @@ const changeCondition = () => {
         }
     })
 }
-const handleTeam = ()=>{
-rl.question("ID member match 1: ", (member1) => {
-    rl.question("ID member match 2: ", (member2) => {
-        rl.question("ID member not match 1: ", (member3) => {
-            rl.question("ID member not match 2: ", (member4) => {
-                match = [parseInt(member1), parseInt(member2)]
-                console.log("member match: ", match);
-                notMatch=[parseInt(member3), parseInt(member4)];
-                console.log("member not match: ", notMatch);
-                changeCondition();
+let prTeam = [];
+const handleTeam = () => {
+    rl.question("ID member match 1: ", (member1) => {
+        rl.question("ID member match 2: ", (member2) => {
+            rl.question("ID member not match 1: ", (member3) => {
+                rl.question("ID member not match 2: ", (member4) => {
+                    rl.question("ID member 1: ", (mem1) => {
+                        rl.question("ID member 2: ", (mem2) => {
+                            rl.question("ID member 3: ", (mem3) => {
+                                prTeam = [parseInt(mem1), parseInt(mem2), parseInt(mem3)];
+                                match = [parseInt(member1), parseInt(member2)]
+                                console.log("member match: ", match);
+                                notMatch = [parseInt(member3), parseInt(member4)];
+                                console.log("member not match: ", notMatch);
+                                changeCondition();
+                            })
+                        })
+                    })
+                })
             })
         })
     })
-})
 }
 handleTeam();
