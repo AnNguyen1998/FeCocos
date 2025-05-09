@@ -1,0 +1,102 @@
+[
+    {
+        "team1": [
+            "Hollis",
+            "Samir",
+            "Lazaro",
+            "Geovanni",
+            "Ruthe"
+        ],
+        "team2": [
+            "Lynn",
+            "Gerson",
+            "Edyth",
+            "Liana",
+            "Annamarie"
+        ],
+        "team1Elo": 1902,
+        "team2Elo": 1511,
+        "winner": "Team 1",
+        "team1WinChance": "56%"
+    },
+    {
+        "team1": [
+            "Coy",
+            "Felix",
+            "Mose",
+            "Keven",
+            "Pierre"
+        ],
+        "team2": [
+            "Aisha",
+            "Joaquin",
+            "Lucienne",
+            "Salvatore",
+            "Cassie"
+        ],
+        "team1Elo": 1703,
+        "team2Elo": 1244,
+        "winner": "Team 1",
+        "team1WinChance": "58%"
+    },
+    {
+        "team1": [
+            "Gabriel",
+            "Norris",
+            "Clementina",
+            "Liana",
+            "Delia"
+        ],
+        "team2": [
+            "Aisha",
+            "Trey",
+            "Georgiana",
+            "Kamryn",
+            "Nelle"
+        ],
+        "team1Elo": 1413,
+        "team2Elo": 1218,
+        "winner": "Team 1",
+        "team1WinChance": "54%"
+    },
+    {
+        "team1": [
+            "Sister",
+            "Mose",
+            "Edyth",
+            "Jany",
+            "Minerva"
+        ],
+        "team2": [
+            "Annette",
+            "Norris",
+            "Kyleigh",
+            "Kamryn",
+            "Nelle"
+        ],
+        "team1Elo": 1418,
+        "team2Elo": 1020,
+        "winner": "Team 2",
+        "team1WinChance": "58%"
+    },
+    {
+        "team1": [
+            "Lynn",
+            "Yazmin",
+            "Jerad",
+            "Neil",
+            "Mose"
+        ],
+        "team2": [
+            "Larissa",
+            "Clementina",
+            "Gabrielle",
+            "Cassie",
+            "Enrico"
+        ],
+        "team1Elo": 1211,
+        "team2Elo": 875,
+        "winner": "Team 2",
+        "team1WinChance": "58%"
+    }
+]
