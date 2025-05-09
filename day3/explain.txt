@@ -1,3 +1,37 @@
 - Đầu tiên tạo 1 class Player gồm các thông tin cần thiết
+ + random elo để xác định bậc rank của Player
 - Sử dụng vòng lặp for random thông tin của 100 người chơi
 - Lưu danh sách người chơi vào file : 'listPlayerStats.json'
+- Tính điểm Elo cho 100 trận đấu ở bậc rank hiện tại cho Player
+- Hiển thị thông tin ở index.html
+
++ Elo cộng trừ khi win/lose theo bậc rank:
+
+ * Iron: +40 / -5
+ * Bronze: +35 / -10
+ * Silve: +30 / -15
+ * Gold: +20 / -15
+ * Platinum: +20 / -20
+ * Emerald: +15 / -20
+ * Diamond: +10 / -20
+ * Master: +5 / -15
+ * Grandmaster: +5 / -20
+ * Challenger: +5 / -30
+ 
+ + Điểm bonus khi có WinStreak/LoseStreak:
+
+ * WinStreak > 3 : +1
+ * WinStreak > 5 : +3
+ * WinStreak > 7 : +5
+
+ * LoseStreak > 3 : -1
+ * LoseStreak > 5 : -3
+ * LoseStreak > 7 : -5
+
+ + Điểm bonus khi có điểm vinh danh:
+
+ * honorPoints > 0 : +1
+ * honorPoints > 2 : +2
+ * honorPoints = 5 : +3
+
+ => Elo sau 100 trận = Elo + (matchWin*point - matchLose*point) + bonus point

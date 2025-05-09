@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Player Calculate Elo System</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<body>
+    <div style="text-align: center;">
+  <h1>Information of Player</h1>
+  <a href="matchrandom.html" style="text-decoration: none; font-size: 30px;">History</a>
+  <table id="player-table">
+    <thead>
+      <tr></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+  <script>
+    async function displayJsonInTable() {
+      try {
+        const response = await fetch('listPlayerStats.json');
+        const jsonData = await response.json();
+        const table = document.getElementById('player-table');
+        const thead = table.querySelector('thead tr');
+        const tbody = table.querySelector('tbody');
+
+        if (Array.isArray(jsonData) && jsonData.length > 0) {
+          const headers = Object.keys(jsonData[0]);
+
+          headers.forEach(headerText => {
+            const th = document.createElement('th');
+            th.textContent = headerText;
+            thead.appendChild(th);
+          });
+
+          jsonData.forEach(item => {
+            const tr = document.createElement('tr');
+            headers.forEach(header => {
+              const td = document.createElement('td');
+              td.textContent = item[header];
+              tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+          });
+        } else if (typeof jsonData === 'object' && jsonData !== null) {
+          const headers = Object.keys(jsonData);
+          let headerRow = document.createElement('tr');
+          headers.forEach(headerText => {
+            const th = document.createElement('th');
+            th.textContent = headerText;
+            thead.appendChild(th);
+          });
+          let dataRow = document.createElement('tr');
+          headers.forEach(header => {
+            const td = document.createElement('td');
+            td.textContent = jsonData[header];
+            tbody.appendChild(td);
+          });
+          tbody.appendChild(dataRow);
+        } else {
+          table.innerHTML = '<p>Invalid data from JSON file.</p>';
+        }
+
+      } catch (error) {
+        console.error('Error when read JSON file:', error);
+        table.innerHTML = "<p>Can't get data from JSON file.</p>";
+      }
+    }
+
+    displayJsonInTable();
+  </script>
+</body>
+</html>

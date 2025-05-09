@@ -1,5 +1,5 @@
 class Player {
-    constructor(riotId, name, winRate, matchWin, matchLose, winStreak, loseStreak, honorPoints, elo) {
+    constructor(riotId, name, winRate, matchWin, matchLose, winStreak, loseStreak, honorPoints, rank, elo) {
         this.riotId = riotId;
         this.name = name;
         this.winRate = winRate;
@@ -8,6 +8,7 @@ class Player {
         this.winStreak = winStreak;
         this.loseStreak = loseStreak;
         this.honorPoints = honorPoints;
+        this.rank = rank;
         this.elo = elo;
     }
 }
@@ -32,7 +33,30 @@ const randomPlayerStats = () => {
             randomPlayer.winStreak = 0;
         }
         randomPlayer.honorPoints = Math.floor(Math.random() * 5);
-        randomPlayer.elo = 0;
+        randomPlayer.elo = Math.round(Math.random() * 3000);
+        if (randomPlayer.elo > 2500) {
+            randomPlayer.rank = "Challenger";
+        } else if (randomPlayer.elo > 2300) {
+            randomPlayer.rank = "Grandmaster"
+        } else if (randomPlayer.elo > 2100) {
+            randomPlayer.rank = "Master"
+        } else if (randomPlayer.elo > 1800) {
+            randomPlayer.rank = "Diamond"
+        } else if (randomPlayer.elo > 1600) {
+            randomPlayer.rank = "Emerald"
+        } else if (randomPlayer.elo > 1400) {
+            randomPlayer.rank = "Platinum"
+        } else if (randomPlayer.elo > 1200) {
+            randomPlayer.rank = "Gold"
+        } else if (randomPlayer.elo > 1000) {
+            randomPlayer.rank = "Silve"
+        } else if (randomPlayer.elo > 800) {
+            randomPlayer.rank = "Bronze"
+        } else if (randomPlayer.elo > 400) {
+            randomPlayer.rank = "Iron"
+        } else {
+            randomPlayer.rank = "Unrank"
+        }
         listPlayer.push(randomPlayer);
     }
     const fs = require('fs');

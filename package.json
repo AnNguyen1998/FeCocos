@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node day3/randomPlayerStats.js"
+    "start": "node day3/randomsomematch.js"
   },
   "author": "",
   "license": "ISC",
