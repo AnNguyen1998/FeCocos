@@ -7,7 +7,7 @@ export const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-console.log("aaa")
+
 const menu = () => {
     console.log("********** MENU ***********");
     console.log("1. List Book in library");
