@@ -47,32 +47,32 @@ export const addProject = (callback: () => void): void => {
     };
 
     rl.question("Enter Name of Project: ", (name) => {
-                rl.question("Enter Begin Date(YYYY-MM-DD): ", (beginDate) => {
-                    rl.question("Enter End Date(YYYY-MM-DD): ", (endDate) => {
-                        project.id = projectList.length + 1;
-                        project.nameProject = name;
-                        const beginDateObj = new Date(beginDate);
-                        const endDateObj = new Date(endDate);
-                        if (isNaN(beginDateObj.getTime()) || isNaN(endDateObj.getTime())) {
-                            console.log("Invalid date format! Use YYYY-MM-DD format.");
-                            callback();
-                            return;
-                        }
-                        if (endDateObj <= beginDateObj) {
-                            console.log("End date must be after begin date!");
-                            callback();
-                            return;
-                        }
-                        project.beginDate = new Date(beginDate);
-                        project.endDate = new Date(endDate);
-                        const createTask = new Projects();
-                        createTask.setProject(project);
-                        projectList.push(createTask.getProject());
-                        console.log("Create Project Successfully!!!");
-                        callback();
-                    })
-                })
+        rl.question("Enter Begin Date(YYYY-MM-DD): ", (beginDate) => {
+            rl.question("Enter End Date(YYYY-MM-DD): ", (endDate) => {
+                project.id = projectList.length + 1;
+                project.nameProject = name;
+                const beginDateObj = new Date(beginDate);
+                const endDateObj = new Date(endDate);
+                if (isNaN(beginDateObj.getTime()) || isNaN(endDateObj.getTime())) {
+                    console.log("Invalid date format! Use YYYY-MM-DD format.");
+                    callback();
+                    return;
+                }
+                if (endDateObj <= beginDateObj) {
+                    console.log("End date must be after begin date!");
+                    callback();
+                    return;
+                }
+                project.beginDate = new Date(beginDate);
+                project.endDate = new Date(endDate);
+                const createTask = new Projects();
+                createTask.setProject(project);
+                projectList.push(createTask.getProject());
+                console.log("Create Project Successfully!!!");
+                callback();
             })
+        })
+    })
 }
 
 export const getProjectByID = (callback: () => void): void => {
@@ -90,24 +90,22 @@ export const getProjectByID = (callback: () => void): void => {
 }
 
 export const calculateProjectProcess = (projectId: number): number => {
-    
+
     const projectTasks = taskList.filter(task => task.idProject === projectId);
-    
+
     if (projectTasks.length === 0) {
         return 0;
     }
-    
+
     const completedTasks = projectTasks.filter(
-        task => task.status.toLowerCase() === "completed" || 
-               task.status.toLowerCase() === "done"
-    ).length;
-    
+        task => task.status.toLowerCase() === "completed").length;
+
     const process = Math.round((completedTasks / projectTasks.length) * 100);
-    
+
     const project = projectList.find(p => p.id === projectId);
     if (project) {
         project.process = process;
     }
-    
+
     return process;
 };
