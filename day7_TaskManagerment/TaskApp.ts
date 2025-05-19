@@ -14,7 +14,7 @@ const menu = () => {
     console.log("2. List Task");
     console.log("3. List User");
     console.log("4. Add Project");
-    console.log("5. Add Task to project");
+    console.log("5. Add Task to project");  
     console.log("6. Add User");
     console.log("7. Project detail");
     console.log("8. Assign Task to User");
