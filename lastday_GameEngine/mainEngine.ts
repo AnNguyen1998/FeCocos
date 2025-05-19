@@ -1,8 +1,10 @@
+import { renderComponent } from "./renderComponent";
+
 export class Engine {
     public static instance: Engine;
 
     constructor () {
-
+        this.gameUpdate();
     }
 
     public static getInstance(): Engine{
@@ -18,17 +20,23 @@ export class Engine {
         let deltaTime = timeStamp - lastTime;
         window.requestAnimationFrame(this.gameLoop);
     }
-
+    isRunning: boolean = true;
     gameStart(): void{
-
+        while (this.isRunning) {
+            const render = new renderComponent();
+        }
     }
 
     gameUpdate(): void{
-
+        window.requestAnimationFrame(this.gameLoop);
     }
 
     gameStop(): void{
-
+        const changeRunning = (isRunning) => {
+            if(isRunning){
+                isRunning = false;
+            }
+        }
     }
     
 }

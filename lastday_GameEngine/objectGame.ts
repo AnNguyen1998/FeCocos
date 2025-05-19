@@ -39,7 +39,7 @@ export class ObjectGame {
         return this.scale;
     }
     setScale(scale: number): void {
-        this.scale = this.scale;
+        this.scale = scale;
     }
 
     getSize(): Vector {
