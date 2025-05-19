@@ -1,42 +1,64 @@
 import { renderComponent } from "./renderComponent";
 
 export class Engine {
-    public static instance: Engine;
+    private static instance: Engine;
+    private isRunning: boolean = false;
+    private lastTime: number = 0;
+    private renderComponent: renderComponent;
 
-    constructor () {
-        this.gameUpdate();
+    private constructor() {
+        this.renderComponent = new renderComponent();
     }
 
-    public static getInstance(): Engine{
-        if(!Engine.instance){
-            Engine.instance = new Engine() ;
+    public static getInstance(): Engine {
+        if (!Engine.instance) {
+            Engine.instance = new Engine();
         }
         return Engine.instance;
     }
 
-    private gameLoop(timeStamp): void {
-        let lastTime;
-        lastTime = lastTime || timeStamp;
-        let deltaTime = timeStamp - lastTime;
-        window.requestAnimationFrame(this.gameLoop);
+    private gameLoop(timeStamp: number): void {
+        if (!this.isRunning) return;
+
+        if (!this.lastTime) {
+            this.lastTime = timeStamp;
+        }
+
+        const deltaTime = timeStamp - this.lastTime;
+        this.lastTime = timeStamp;
+
+        this.update(deltaTime);
+
+        this.render();
+
+        window.requestAnimationFrame((time) => this.gameLoop(time));
     }
-    isRunning: boolean = true;
-    gameStart(): void{
-        while (this.isRunning) {
-            const render = new renderComponent();
+
+    private update(deltaTime: number): void {
+        
+    }
+
+    private render(): void {
+        this.renderComponent.render();
+    }
+
+    public gameStart(): void {
+        if (!this.isRunning) {
+            this.isRunning = true;
+            this.lastTime = 0;
+            window.requestAnimationFrame((time) => this.gameLoop(time));
+            console.log("Game started");
         }
     }
 
-    gameUpdate(): void{
-        window.requestAnimationFrame(this.gameLoop);
+    public gameStop(): void {
+        this.isRunning = false;
+        console.log("Game stopped");
     }
 
-    gameStop(): void{
-        const changeRunning = (isRunning) => {
-            if(isRunning){
-                isRunning = false;
-            }
+    public gameUpdate(): void {
+        if (!this.isRunning) {
+            this.gameStart();
         }
     }
-    
 }

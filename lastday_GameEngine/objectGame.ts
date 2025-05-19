@@ -11,7 +11,10 @@ export class ObjectGame {
     protected size: Vector;
 
     constructor() {
-
+        this.position = { x: 0, y: 0 };
+        this.rotate = 0;
+        this.scale = 1;
+        this.size = { x: 0, y: 0 };
     }
 
     getName(): string {
@@ -49,4 +52,11 @@ export class ObjectGame {
         this.size = size;
     }
 
+    update(): void {
+      
+    }
+
+    render(): void {
+        
+    }
 }
