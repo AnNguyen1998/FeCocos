@@ -3,18 +3,23 @@ interface Vector {
     y: number;
 }
 
+interface Size {
+    width: number;
+    hight: number;
+}
+
 export class ObjectGame {
     protected name: string;
     protected position: Vector;
     protected rotate: number;
     protected scale: number;
-    protected size: Vector;
+    protected size: Size;
 
     constructor() {
         this.position = { x: 0, y: 0 };
         this.rotate = 0;
         this.scale = 1;
-        this.size = { x: 0, y: 0 };
+        this.size = { width: 0, hight: 0 };
     }
 
     getName(): string {
@@ -45,14 +50,14 @@ export class ObjectGame {
         this.scale = scale;
     }
 
-    getSize(): Vector {
+    getSize(): Size {
         return this.size;
     }
-    setSize(size: Vector): void {
+    setSize(size: Size): void {
         this.size = size;
     }
 
-    update(): void {
+    update(deltaTime: number): void {
       
     }
 

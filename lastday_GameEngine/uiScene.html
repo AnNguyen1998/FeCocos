@@ -1,36 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Scene</title>
-    <link href="uiScene.css" rel="stylesheet">
+    <title>Mini Game Engine - Chicken Shooter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="sidebar">
-        <h2>Components</h2>
-        <div class="component-list">
-            <div class="component-item" data-component="sprite">Add Sprite</div>
-            <div class="component-item" data-component="button">Add Button</div>
-        </div>
-        <div class="game-controls">
-            <button id="startGame" class="game-button">Start Game</button>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <div class="toolbar">
-            <button id="clearScene">Clear Scene</button>
-            <button id="saveScene">Save Scene</button>
-            <button id="loadScene">Load Scene</button>
-        </div>
-
-        <div class="scene-container">
-            <canvas id="sceneCanvas"></canvas>
-        </div>
-    </div>
+    <canvas id="gameCanvas"></canvas>
+    <script type="module" src="./dist/main.js"></script>
 </body>
-
 </html>

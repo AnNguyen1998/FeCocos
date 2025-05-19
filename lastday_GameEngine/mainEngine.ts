@@ -1,7 +1,7 @@
 import { renderComponent } from "./renderComponent";
 
-export class Engine {
-    private static instance: Engine;
+export class mainEngine {
+    private static instance: mainEngine;
     private isRunning: boolean = false;
     private lastTime: number = 0;
     private renderComponent: renderComponent;
@@ -10,11 +10,11 @@ export class Engine {
         this.renderComponent = new renderComponent();
     }
 
-    public static getInstance(): Engine {
-        if (!Engine.instance) {
-            Engine.instance = new Engine();
+    public static getInstance(): mainEngine {
+        if (!mainEngine.instance) {
+            mainEngine.instance = new mainEngine();
         }
-        return Engine.instance;
+        return mainEngine.instance;
     }
 
     private gameLoop(timeStamp: number): void {
@@ -31,7 +31,7 @@ export class Engine {
 
         this.render();
 
-        window.requestAnimationFrame((time) => this.gameLoop(time));
+        requestAnimationFrame((time) => this.gameLoop(time));
     }
 
     private update(deltaTime: number): void {
@@ -46,7 +46,7 @@ export class Engine {
         if (!this.isRunning) {
             this.isRunning = true;
             this.lastTime = 0;
-            window.requestAnimationFrame((time) => this.gameLoop(time));
+            requestAnimationFrame((time) => this.gameLoop(time));
             console.log("Game started");
         }
     }

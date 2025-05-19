@@ -1,4 +1,4 @@
-import { Components } from './components'
+import { Components } from './Components'
 
 export class renderComponent {
     private components: Components[] = [];
@@ -16,7 +16,7 @@ export class renderComponent {
         for (const component of this.components) {
             const objectGame = component.getComponent();
             if (objectGame) {
-                objectGame.update();
+                objectGame.update(deltaTime);
                 objectGame.render();
             }
         }
